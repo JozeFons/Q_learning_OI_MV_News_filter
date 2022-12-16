@@ -67,3 +67,7 @@ for episode in range(episodes):
     mvo = (1 + reward) / (1 + abs(reward))
     
     # Update the Q-value for the current state
+    q_table[state][action] = (1 - alpha) * q_table[state][action] + alpha * (reward + gamma * max(q_table[next_state].values()))
+    
+    # Update the state and reward
+    state = next_state
